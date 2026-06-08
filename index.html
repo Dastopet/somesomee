@@ -90,29 +90,44 @@ button{
 
 function mulaiKejutan(){
 
-    for(let i=0;i<100;i++){
+    for(let i=0;i<200;i++){
 
         let konfeti=document.createElement("div");
-        konfeti.className="konfeti";
-        konfeti.innerHTML=["🎉","✨","🎊"][Math.floor(Math.random()*3)];
 
+        konfeti.innerHTML=["🎉","🎊","✨","⭐","💖"]
+        [Math.floor(Math.random()*5)];
+
+        konfeti.style.position="fixed";
         konfeti.style.left=Math.random()*100+"vw";
-        konfeti.style.animationDuration=
-        (Math.random()*3+2)+"s";
+        konfeti.style.top="-50px";
+
+        konfeti.style.fontSize=
+        (Math.random()*25+20)+"px";
 
         document.body.appendChild(konfeti);
 
+        let durasi=Math.random()*3+3;
+
+        konfeti.animate(
+        [
+            {transform:"translateY(0px) rotate(0deg)"},
+            {transform:"translateY(120vh) rotate(720deg)"}
+        ],
+        {
+            duration:durasi*1000,
+            easing:"linear"
+        });
+
         setTimeout(()=>{
             konfeti.remove();
-        },5000);
+        },durasi*1000);
     }
 
     setTimeout(()=>{
         document.getElementById("halaman1").style.display="none";
         document.getElementById("halaman2").style.display="block";
-    },3000);
+    },5000);
 }
-</script>
 
 </body>
 </html>
