@@ -1,50 +1,118 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kejutan Untukmu</title>
-    <style>
-        body{
-            font-family: Arial, sans-serif;
-            text-align:center;
-            background-color:#f0f8ff;
-            margin-top:100px;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kejutan</title>
 
-        button{
-            padding:15px 30px;
-            font-size:18px;
-            cursor:pointer;
-            border:none;
-            border-radius:10px;
-            background-color:#4CAF50;
-            color:white;
-        }
+<style>
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    text-align:center;
+    overflow:hidden;
+}
 
-        #hasil{
-            margin-top:30px;
-            font-size:32px;
-            font-weight:bold;
-            color:red;
-        }
-    </style>
+#halaman1{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    background:#f0f8ff;
+}
+
+#halaman2{
+    display:none;
+    height:100vh;
+    background:linear-gradient(to bottom,#ffd6e7,#fff);
+    position:relative;
+}
+
+button{
+    padding:15px 30px;
+    font-size:20px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.konfeti{
+    position:absolute;
+    font-size:25px;
+    animation:jatuh 3s linear forwards;
+}
+
+@keyframes jatuh{
+    from{
+        transform:translateY(-100px);
+    }
+    to{
+        transform:translateY(110vh);
+    }
+}
+
+.bunga{
+    position:absolute;
+    font-size:40px;
+    animation:melayang 4s infinite alternate;
+}
+
+@keyframes melayang{
+    from{transform:translateY(0);}
+    to{transform:translateY(-20px);}
+}
+</style>
 </head>
 <body>
 
-    <h1>Ada sesuatu untukmu 🎁</h1>
-    <p>Silakan klik tombol di bawah ini!</p>
+<div id="halaman1">
+    <h1>🎁 Ada sesuatu untukmu 🎁</h1>
+    <button onclick="mulaiKejutan()">Klik Di Sini</button>
+</div>
 
-    <button onclick="tampilkanNama()">Klik Di Sini</button>
+<div id="halaman2">
+    <h1 style="padding-top:100px;">
+        🌸 Untuk Nama Temanmu 🌸
+    </h1>
 
-    <div id="hasil"></div>
+    <h2>Kapan Bayar Hutang Sat !!! 😊</h2>
 
-    <script>
-        function tampilkanNama() {
-            document.getElementById("hasil").innerHTML =
-                "🎉 Selamat! Kamu berhasil menemukan: RIZKY 🎉";
-        }
-    </script>
+    <div class="bunga" style="left:10%;top:30%">🌹</div>
+    <div class="bunga" style="left:25%;top:60%">🌸</div>
+    <div class="bunga" style="left:40%;top:40%">🌷</div>
+    <div class="bunga" style="left:60%;top:65%">🌺</div>
+    <div class="bunga" style="left:75%;top:35%">🌻</div>
+    <div class="bunga" style="left:90%;top:55%">🌼</div>
+</div>
+
+<script>
+
+function mulaiKejutan(){
+
+    for(let i=0;i<100;i++){
+
+        let konfeti=document.createElement("div");
+        konfeti.className="konfeti";
+        konfeti.innerHTML=["🎉","✨","🎊"][Math.floor(Math.random()*3)];
+
+        konfeti.style.left=Math.random()*100+"vw";
+        konfeti.style.animationDuration=
+        (Math.random()*3+2)+"s";
+
+        document.body.appendChild(konfeti);
+
+        setTimeout(()=>{
+            konfeti.remove();
+        },5000);
+    }
+
+    setTimeout(()=>{
+        document.getElementById("halaman1").style.display="none";
+        document.getElementById("halaman2").style.display="block";
+    },3000);
+}
+</script>
 
 </body>
 </html>
