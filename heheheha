@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kejutan Untukmu</title>
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            text-align:center;
+            background-color:#f0f8ff;
+            margin-top:100px;
+        }
+
+        button{
+            padding:15px 30px;
+            font-size:18px;
+            cursor:pointer;
+            border:none;
+            border-radius:10px;
+            background-color:#4CAF50;
+            color:white;
+        }
+
+        #hasil{
+            margin-top:30px;
+            font-size:32px;
+            font-weight:bold;
+            color:red;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Ada sesuatu untukmu 🎁</h1>
+    <p>Silakan klik tombol di bawah ini!</p>
+
+    <button onclick="tampilkanNama()">Klik Di Sini</button>
+
+    <div id="hasil"></div>
+
+    <script>
+        function tampilkanNama() {
+            document.getElementById("hasil").innerHTML =
+                "🎉 Selamat! Kamu berhasil menemukan: RIZKY 🎉";
+        }
+    </script>
+
+</body>
+</html>
